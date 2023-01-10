@@ -6,10 +6,10 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "djang-quiz-tf-state"
-    key = "django-quiz.tfstate"
-    region = "us-east-1"
-    encrypt = true
+    bucket         = "djang-quiz-tf-state"
+    key            = "django-quiz.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
     dynamodb_table = "django-quiz-tf-state-lock"
   }
   required_version = ">= 1.2.0"
@@ -17,15 +17,15 @@ terraform {
 
 provider "aws" {
   region  = "us-east-1"
-  profile = "default" 
+  profile = "default"
 }
 
 locals {
   prefix = "${var.prefix}-${terraform.workspace}"
   common_tags = {
     Environment = terraform.workspace
-    Project = var.project
-    Owner = var.contact
-    ManagedBy = "Terraform"
+    Project     = var.project
+    Owner       = var.contact
+    ManagedBy   = "Terraform"
   }
 }
