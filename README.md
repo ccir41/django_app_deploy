@@ -38,15 +38,15 @@ A sample django app to deploy in AWS using Terraform
 - `aws ecr create-repository help`
 - `aws ecr create-repository --repository-name django-quiz-app --region us-east-1 --image-scanning-configuration scanOnPush=true`
 - `aws ecr create-repository --repository-name django-quiz-app-proxy --region us-east-1 --image-scanning-configuration scanOnPush=true`
-- `output:::: 067198536484.dkr.ecr.us-east-1.amazonaws.com/django-quiz-app`
+- `output:::: 160435408726.dkr.ecr.us-east-1.amazonaws.com/django-quiz-app`
 - `docker build . -t django-quiz-app`
 - `docker build -f ./proxy/Dockerfile ./proxy -t django-quiz-app-proxy`
-- `aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 067198536484.dkr.ecr.us-east-1.amazonaws.com`
-- `docker tag django-quiz-app:latest 067198536484.dkr.ecr.us-east-1.amazonaws.com/django-quiz-app:latest`
-- `docker tag django-quiz-app-proxy:latest 067198536484.dkr.ecr.us-east-1.amazonaws.com/django-quiz-app-proxy:latest`
-- `docker push 067198536484.dkr.ecr.us-east-1.amazonaws.com/django-quiz-app:latest`
-- `docker push 067198536484.dkr.ecr.us-east-1.amazonaws.com/django-quiz-app-proxy:latest`
-- `aws ecr list-images --repository-name django-quiz-app`
+- `aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 160435408726.dkr.ecr.us-east-1.amazonaws.com`
+- `docker tag django-quiz-app:latest 160435408726.dkr.ecr.us-east-1.amazonaws.com/django-quiz-app:latest`
+- `docker tag django-quiz-app-proxy:latest 160435408726.dkr.ecr.us-east-1.amazonaws.com/django-quiz-app-proxy:latest`
+- `docker push 160435408726.dkr.ecr.us-east-1.amazonaws.com/django-quiz-app:latest`
+- `docker push 160435408726.dkr.ecr.us-east-1.amazonaws.com/django-quiz-app-proxy:latest`
+- `aws ecr list-images --repository-name django-quiz-app --region us-east-1`
 
 #### create terraform file in local machine
 - go to deploy folder by changing path by cd deploy
@@ -59,7 +59,10 @@ A sample django app to deploy in AWS using Terraform
 - `terraform destroy`
 
 ##### for ECR
-- `docker tag django-quiz:latest 067198536484.dkr.ecr.us-east-1.amazonaws.com/django-quiz:latest`
-- `docker push 067198536484.dkr.ecr.us-east-1.amazonaws.com/django-quiz:latest`
-- `aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 067198536484.dkr.ecr.us-east-1.amazonaws.com`
-- `docker pull 067198536484.dkr.ecr.us-east-1.amazonaws.com/django-quiz:latest`
+- `docker tag django-quiz:latest 160435408726.dkr.ecr.us-east-1.amazonaws.com/django-quiz:latest`
+- `docker push 160435408726.dkr.ecr.us-east-1.amazonaws.com/django-quiz:latest`
+- `aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 160435408726.dkr.ecr.us-east-1.amazonaws.com`
+- `docker pull 160435408726.dkr.ecr.us-east-1.amazonaws.com/django-quiz:latest`
+
+##### Attach instance profile to EC2
+`aws ec2 associate-iam-instance-profile --iam-instance-profile Name=DjangoQuizEC2Profile --instance-id i-0bc2af00ee953b75e`

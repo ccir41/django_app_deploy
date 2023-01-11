@@ -38,9 +38,9 @@ resource "aws_security_group" "web-sg" {
 resource "aws_instance" "server" {
   ami                    = data.aws_ami.ubuntu_server.id
   instance_type          = "t2.micro"
+  iam_instance_profile   = "DjangoQuizEC2Profile"
   user_data              = file("init-script.sh")
   vpc_security_group_ids = [aws_security_group.web-sg.id]
-  iam_instance_profile   = "LabInstanceProfile"
 
   tags = merge(
     local.common_tags,
