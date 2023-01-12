@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "djang-quiz-tf-state"
+    bucket         = "django-quiz-tf-state"
     key            = "django-quiz.tfstate"
     region         = "us-east-1"
     encrypt        = true

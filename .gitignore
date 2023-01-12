@@ -131,3 +131,6 @@ dmypy.json
 ##### Terraform
 .terraform/
 .terraform.lock.hcl
+
+# custom
+privatefile.md

@@ -65,4 +65,7 @@ A sample django app to deploy in AWS using Terraform
 - `docker pull 160435408726.dkr.ecr.us-east-1.amazonaws.com/django-quiz:latest`
 
 ##### Attach instance profile to EC2
-`aws ec2 associate-iam-instance-profile --iam-instance-profile Name=DjangoQuizEC2Profile --instance-id i-0bc2af00ee953b75e`
+`aws ec2 associate-iam-instance-profile --iam-instance-profile Name=EC2Profile --instance-id i-0bc2af00ee953b75e`
+
+#### webapp with rds instance
+![](2023-01-12-11-50-03.png)

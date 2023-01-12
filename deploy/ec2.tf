@@ -38,7 +38,7 @@ resource "aws_security_group" "web-sg" {
 resource "aws_instance" "server" {
   ami                    = data.aws_ami.ubuntu_server.id
   instance_type          = "t2.micro"
-  iam_instance_profile   = "DjangoQuizEC2Profile"
+  iam_instance_profile   = aws_iam_instance_profile.ec2-profile.name
   user_data              = file("init-script.sh")
   vpc_security_group_ids = [aws_security_group.web-sg.id]
 
